@@ -30,9 +30,9 @@ namespace Taskv2
                 //Here we create a Admin super user who will maintain the website                   
 
                 var user = new AspNetUser();
-                user.UserName = "admin@domain.net";
-                user.Email = "admin@domain.net";
-                string userPWD = "admin.123";
+                user.UserName = "admin@caretta.net";
+                user.Email = "admin@caretta.net";
+                string userPWD = "Caretta.97";
                 user.pwdChanged = true;
 
                 var chkUser = UserManager.Create(user, userPWD);
