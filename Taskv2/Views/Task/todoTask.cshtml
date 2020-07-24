@@ -1,0 +1,52 @@
+﻿@model List<Taskv2.Models.Gorev>
+@{
+    ViewBag.Title = "todoTask";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <td>
+                <div class="col-md-2">Name</div>
+            </td>
+            <td>
+                <div class="col-md-3">Explanation</div>
+            </td>
+            <td>
+                <div class="col-md-1">Status</div>
+            </td>
+            <td>
+                <div class="col-md-2">Project</div>
+            </td>
+            <td>
+                <div class="col-md-2">Send</div>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr id="satir_@item.GorevID">
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Expression
+            </td>
+
+            <td>
+                @item.Status
+            </td>
+            <td>
+                @item.Proje.Name
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" onclick="gonder(@item.GorevID)">
+                    <span class="glyphicon glyphicon-share-alt"></span>
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Taskv2.Models.Proje>
+@{
+    ViewBag.Title = "Proje";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <td>
+                <div class="col-md-2">Name</div>
+            </td>
+            <td>
+                <div class="col-md-3">Explanation</div>
+            </td>
+            <td>
+                <div class="col-md-1">Status</div>
+            </td>
+            <td>
+                <div class="col-md-1">Create Task</div>
+            </td>
+            <td>
+                <div class="col-md-1">Delete Project</div>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="satir_@item.ProjeID">
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Expression
+                </td>
+
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus">Task</span>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary"onclick="sil(@item.ProjeID)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (User.IsInRole("yonetici") || User.IsInRole("personel") || User.IsInRole("admin"))
+                {
+                    @Html.ActionLink("Caretta", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.IsInRole("yonetici") || User.IsInRole("personel") || User.IsInRole("admin"))
+                    {
+                        if (User.IsInRole("admin"))
+                        {
+                            <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                            <li>@Html.ActionLink("Deleted Project", "DeletedProject", "Admin")</li>
+                        }
+                        if (User.IsInRole("yonetici"))
+                        {
+                            <li>@Html.ActionLink("Create Employee", "CreateEmployee", "Task")</li>
+                            <li>@Html.ActionLink("Project List", "Proje", "Proje")</li>
+                            <li>@Html.ActionLink("Task List", "Task", "Task")</li>
+                            <li>@Html.ActionLink("Expected Task List", "ExpectedTask", "Task")</li>
+                            <li>@Html.ActionLink("Create Project", "projeEkle", "Proje")</li>
+                            <li>@Html.ActionLink("Create Task", "taskEkle", "Task")</li>
+                        }
+                        if (User.IsInRole("personel"))
+                        {
+                            <li>@Html.ActionLink("TODO Task", "todoTask", "Task")</li>
+
+                        }
+
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/kullanici.js"></script>
+
+
+</body>
+
+</html>
